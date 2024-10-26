@@ -1,0 +1,18 @@
+# .github/workflows/on-issue-comment.yml
+name: Issue Comment Event Trigger
+
+on:
+  issue_comment:
+    types: [created, edited, deleted]
+
+jobs:
+  handle-issue-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Issue Comment Event
+        run: |
+          echo "An issue comment event was triggered!"
+          echo "Comment body: ${{ github.event.comment.body }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "Issue title: ${{ github.event.issue.title }}"
