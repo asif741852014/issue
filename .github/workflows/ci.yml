@@ -1,0 +1,18 @@
+# .github/workflows/on-issue.yml
+name: Issue Event Trigger
+
+on:
+  issues:
+    types: [opened, closed]
+
+jobs:
+  handle-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Issue Event
+        run: |
+          echo "An issue event was triggered!"
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue state: ${{ github.event.issue.state }}"
+          echo "Action: ${{ github.event.action }}"
